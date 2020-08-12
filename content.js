@@ -12,4 +12,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   // background.jsに渡す
   // ※ 外部サイトのアクセス等はbackgroundからじゃないと実行できない
   chrome.runtime.sendMessage({ itemlist: itemlist });
+
+    // 下記の処理は何もしないがエラーが出るため呼び出す。
+  // ※ 参考 https://qiita.com/noenture/items/3978f638f2ffb8ff0995
+  sendResponse();
+  return;
 });

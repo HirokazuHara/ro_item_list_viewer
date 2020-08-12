@@ -1,5 +1,5 @@
 // アイテム情報をセットする
-function setItemInfo(text, itemdata) {
+function setItemInfo(text) {
   parser = new DOMParser();
   doc = parser.parseFromString(text, "text/html");
   itemname = doc.querySelector(
@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // アイテム情報の取得
     fetch(url)
       .then((response) => response.text())
-      .then((text) => setItemInfo(text, itemdata));
+      .then((text) => setItemInfo(text));
   }
 
   // 新しいタブを開いて表示する
