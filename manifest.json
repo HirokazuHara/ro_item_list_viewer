@@ -9,7 +9,8 @@
         "128": "4054.png"
     },
     "permissions": [
-        "https://rotool.gungho.jp/monster/item.php?*"
+        "https://rotool.gungho.jp/monster/item.php?*",
+        "tabs"
     ],
     "browser_action": {
         "default_icon": "4054.png",
