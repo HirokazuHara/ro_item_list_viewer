@@ -1,3 +1,4 @@
+// アイテム情報をセットする
 function setItemInfo(text, itemdata) {
   parser = new DOMParser();
   doc = parser.parseFromString(text, "text/html");
@@ -12,17 +13,20 @@ function setItemInfo(text, itemdata) {
 
 var itemdata = {};
 
+// contents.jsから受信
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   itemdata = {};
 
   for (var i = 0; i < request.itemlist.length; i++) {
     url = request.itemlist[i];
 
+    // アイテム情報の取得
     fetch(url)
       .then((response) => response.text())
       .then((text) => setItemInfo(text, itemdata));
   }
 
+  // 新しいタブを開いて表示する
   chrome.tabs.create({ url: "item.html" });
 
   return true;

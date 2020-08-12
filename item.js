@@ -1,5 +1,6 @@
 $(function () {
-  // すぐ表示するとデータが読み込まれないので1秒後に表示する。
+  // タブを開いてから少し待たないとbackgroundの変数の値を取得できなかったので
+  // 一秒ほど待ってから処理を行うようにしている。
   setTimeout(function () {
     setItemInfo();
   }, "1000");
@@ -14,6 +15,10 @@ function setItemInfo() {
     info = itemdata[key].split("―――――――――――――");
     condition = "";
 
+    // 装備情報の最後にある装備の種別いった情報を別枠でだすため
+    // その部分の情報を取り出す。
+    // 判定は「重量 :」という文字列が含まれているかどうかで行っている。
+    // ※ 装備以外のアイテムも重量だけ記載されているので
     if (info[info.length - 1].match(/重量 :/)) {
       condition = info[info.length - 1];
       info.pop();
@@ -21,6 +26,7 @@ function setItemInfo() {
 
     desc = "";
 
+    // 説明が長い場合は省略して出すようにする。
     if (info.length >= 3) {
       desc = `
                     <div id=mini_desc${i}>
@@ -45,6 +51,7 @@ function setItemInfo() {
     i++;
   }
 
+  // 表示・非表示の制御
   $(document).on("click", "label", function () {
     index = $(this).attr("index");
     action = $(this).attr("class");
