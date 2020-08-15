@@ -25,14 +25,17 @@
         <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="item.js"></script>
         <p>アイテムの説明文が長い場合は省略して表示しています、「すべてを表示」をクリックすると全部表示されます。</p>
-        <p>ページ内のアイテムの説明が多い場合は最初の表示で全て表示しきれてない可能性あるので、その場合はこの画面を更新してください。</p>
+        <p>ページ内のアイテム数が多い場合は最初の表示で全て表示しきれてない可能性あるので、その場合はこの画面を更新してください。</p>
         <p>またアイテムの並び順がおかしいのは仕様です・・・、ごめんなさい。</p>
+        系列: <select id="itemtype">
+            <option value="*">全てを表示</option>
+        </select>
         <table id="item">
             <thead>
                 <tr>
                     <th width="30%">アイテム名</th>
                     <th>説明</th>
-                    <th width="30%">装備条件</th>
+                    <th width="30%">アイテム情報</th>
                 </tr>
             </thead>
             <tbody>
