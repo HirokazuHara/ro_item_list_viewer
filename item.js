@@ -72,7 +72,11 @@ function setItemData() {
     }
 
     $("table#item tbody").append(
-      `<tr itemtype="${iteminfo['系列']}"><td>${key}</td><td>${desc}</td><td>${iteminfoDoc}</td></tr>`
+      `<tr itemname="${key}" itemtype="${iteminfo['系列']}">
+        <td>${key}</td>
+        <td>${desc}</td>
+        <td>${iteminfoDoc}</td>
+      </tr>`
     );
 
     i++;
@@ -86,9 +90,27 @@ function setItemData() {
     $("#itemtype").append($option)
   }
 
+  // テキストボックスの挙動
+  $("#itemname").keyup(function(){
+    itemname = $(this).val();
+
+    $("table#item tbody tr").each(function(){
+      if(itemname == "") {
+        $(this).show();
+      } else {
+        if($(this).attr('itemname').indexOf(itemname) > -1) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      }
+    });
+  });
+
   // リストボックスの挙動
   $("#itemtype").change(function() {
     itemtype = $(this).val();
+
     $("table#item tbody tr").each(function(){
       if(itemtype == "*") {
         $(this).show();
