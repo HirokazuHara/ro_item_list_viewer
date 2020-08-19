@@ -1,6 +1,6 @@
 {
     "name": "RO Item List Viewer",
-    "version": "1.0",
+    "version": "1.2",
     "manifest_version": 2,
     "description": "ROのページ内のアイテムを情報を一覧にして表示する拡張",
     "icons": {
