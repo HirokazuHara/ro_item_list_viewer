@@ -83,11 +83,18 @@ function setItemData() {
   }
 
   // リストボックスに追加
-  for (var type of itemtypes) {
+  for (var type of Array.from(itemtypes).sort()) {
     $option = $('<option>')
                 .val(type)
                 .text(type);
     $("#itemtype").append($option)
+  }
+
+  // datalistに追加
+  for (var name of Object.keys(itemdata).sort()) {
+    $option = $('<option>')
+                .val(name);
+    $("#itemlist").append($option)
   }
 
   // テキストボックスの挙動
@@ -122,6 +129,8 @@ function setItemData() {
         }
       }
     });
+
+    $("#itemname").val("");
   });
 
   // 表示・非表示の制御
